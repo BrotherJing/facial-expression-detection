@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context=".MainActivity"
+    android:id="@+id/mainView"
+    android:background="@color/dark_grey">
+
+    <com.brotherjing.facialexpdemo.views.ChangeColorView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/change_color"
+        android:visibility="gone"
+        android:background="@color/joy"/>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="40dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/iv_album"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:id="@+id/tvTitle"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:id="@+id/tvSinger"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:id="@+id/tvAlbum"/>
+
+        <com.brotherjing.facialexpdemo.views.MyViewGroup
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tag_list"></com.brotherjing.facialexpdemo.views.MyViewGroup>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvDisgustSum"
+            android:visibility="gone"/>
+
+        <SeekBar
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/seekBar"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/play3"
+                android:id="@+id/btn_play"/>
+            <Button
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/pause2"
+                android:id="@+id/btn_pause"/>
+            <Button
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/next2"
+                android:id="@+id/btn_switch"/>
+            <Button
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/magic"
+                android:id="@+id/btn_mode"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+
+        <SurfaceView
+            android:id="@+id/surfaceView"
+            android:layout_width="100dp"
+            android:layout_height="120dp"/>
+
+        <com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar
+            android:layout_width="fill_parent"
+            android:layout_height="36dp"
+            android:layout_gravity="bottom"
+            android:id="@+id/progress_bar"
+            app:rcRadius="8dp"
+            app:rcIconPadding="2dp"
+            app:rcIconSize="32dp"
+            app:rcIconSrc="@drawable/smile2"
+            app:rcIconBackgroundColor="@color/dark_green"
+            app:rcBackgroundPadding="2dp"
+            app:rcBackgroundColor="@color/darker_grey"
+            app:rcProgressColor="@color/green"
+            app:rcProgress="2000"
+            app:rcMax="2000" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:textColor="@android:color/white"
+        android:id="@+id/smileView"/>
+</RelativeLayout>
