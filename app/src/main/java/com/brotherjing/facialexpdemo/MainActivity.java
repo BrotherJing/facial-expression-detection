@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.affectiva.android.affdex.sdk.Frame;
 import com.affectiva.android.affdex.sdk.detector.CameraDetector;
@@ -316,6 +317,7 @@ public class MainActivity extends AppCompatActivity implements Detector.ImageLis
                         try {
                             if (searchResponse == null || searchResponse.getResult() == null || searchResponse.getResult().getSongCount() == 0) {
                                 Log.i("yj", "songs is null!");
+                                Toast.makeText(MainActivity.this,"再试一次~",Toast.LENGTH_SHORT).show();
                                 isSwitching = false;
                                 //safeStart();
                             } else {
@@ -332,6 +334,7 @@ public class MainActivity extends AppCompatActivity implements Detector.ImageLis
                                 playingThread.start();
                             }
                         }catch (NullPointerException e){
+                            Toast.makeText(MainActivity.this,"再试一次~",Toast.LENGTH_SHORT).show();
                             isSwitching = false;
                         }finally {
                             safeStart();
@@ -344,9 +347,9 @@ public class MainActivity extends AppCompatActivity implements Detector.ImageLis
 
     private void fillViewWithSong(SearchSong song){
         tvTitle.setText(song.getName());
-        tvAlbum.setText(song.getAlbum().getName());
+        //tvAlbum.setText(song.getAlbum().getName());
         if(song.getArtists().isEmpty())return;
-        tvSinger.setText(song.getArtists().get(0).getName());
+        tvSinger.setText(song.getArtists().get(0).getName()+"  "+song.getAlbum().getName());
 
         tagList.removeAllViews();
         if(GlobalEnv.currentMusic==null)return;
@@ -397,6 +400,7 @@ public class MainActivity extends AppCompatActivity implements Detector.ImageLis
                     public void onNext(SearchResponse searchResponse) {
                         try {
                             if (searchResponse.getResult().getSongs().isEmpty()) {
+                                Toast.makeText(MainActivity.this,"再试一次~",Toast.LENGTH_SHORT).show();
                                 Log.i("yj", "songs is null!");
                                 isSwitching = false;
                             } else {
@@ -413,6 +417,7 @@ public class MainActivity extends AppCompatActivity implements Detector.ImageLis
                                 playingThread.start();
                             }
                         }catch (NullPointerException e){
+                            Toast.makeText(MainActivity.this,"再试一次~",Toast.LENGTH_SHORT).show();
                             isSwitching = false;
                         }finally {
                             safeStart();

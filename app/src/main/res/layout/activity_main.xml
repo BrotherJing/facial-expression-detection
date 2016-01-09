@@ -18,14 +18,37 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_margin="40dp"
+        android:paddingBottom="20dp"
         android:orientation="vertical">
 
-        <ImageView
+        <!--<ImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginBottom="10dp"
             android:layout_gravity="center_horizontal"
-            android:id="@+id/iv_album"/>
+            android:id="@+id/iv_album"/>-->
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <View
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/shape_black_round"/>
+
+            <com.brotherjing.facialexpdemo.views.RoundImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:id="@+id/iv_album"
+                android:layout_centerInParent="true"
+                app:type="circle"
+                app:radius="40dp"/>
+
+        </RelativeLayout>
+
 
         <TextView
             android:layout_width="fill_parent"
@@ -42,6 +65,7 @@
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:textColor="@android:color/white"
             android:id="@+id/tvAlbum"/>
 

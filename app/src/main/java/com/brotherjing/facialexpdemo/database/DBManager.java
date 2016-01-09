@@ -46,9 +46,13 @@ public class DBManager {
     }
 
     public static boolean addTag(String name){
+        return addTag(name,0);
+    }
+
+    public static boolean addTag(String name,int initial){
         Tag tag = new Tag();
         tag.setName(name);
-        tag.setCount(0);
+        tag.setCount(initial);
         if(isRowExist(name))return false;
         tagDao.insert(tag);
         return true;
@@ -63,7 +67,7 @@ public class DBManager {
     }
 
     public static Tag getGoodTag(){
-        List<Tag> tags = tagDao.queryBuilder().orderDesc(TagDao.Properties.Count).limit(10).list();
+        List<Tag> tags = tagDao.queryBuilder().where(TagDao.Properties.Count.gt(0)).list();
         return tags.get((int)(Math.random()*tags.size()));
     }
 

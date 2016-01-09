@@ -33,10 +33,12 @@ public class NetEaseProvider {
 
     public static Observable<SearchResponse> nextSongWithTag(final String tag){
         Observable<TagSearchResponse> tagSearchResponseObservable;
+        GlobalEnv.currentTag = tag;
         if(GlobalEnv.tagTotal.containsKey(tag)){
             int offset = GlobalEnv.tagTotal.get(tag);
             offset = offset>10?offset-10:0;
-            tagSearchResponseObservable = RetrofitClient.getNetEaseApi().searchTagRange(tag, (int) (Math.random() *offset),10);
+            offset = (int) (Math.random() *offset);
+            tagSearchResponseObservable = RetrofitClient.getNetEaseApi().searchTagRange(tag, offset,10);
             Log.i("yj","search "+tag+" with offset "+offset);
         }else{
             tagSearchResponseObservable = RetrofitClient.getNetEaseApi().searchTag(tag);
@@ -73,11 +75,14 @@ public class NetEaseProvider {
     public static void updateTagOfLastSong(double hp){
         Music music = GlobalEnv.currentMusic;
         if(music==null)return;
+        String tag = GlobalEnv.currentTag;
+        if(tag==null)return;
         if(hp<=200)
-            for(com.brotherjing.facialexpdemo.bean.douban.Tag tag:music.getTags()){
+            /*for(com.brotherjing.facialexpdemo.bean.douban.Tag tag:music.getTags()){
                 if(tag.getName().length()>5)continue;
                 DBManager.decreaseTagCount(tag.getName(),1);
-            }
+            }*/
+            DBManager.decreaseTagCount(tag,1);
         else if(hp<=1000) {
             //do nothing
             /*for(com.brotherjing.facialexpdemo.bean.douban.Tag tag:music.getTags()){
@@ -86,9 +91,9 @@ public class NetEaseProvider {
             }*/
         }
         else
-            for(com.brotherjing.facialexpdemo.bean.douban.Tag tag:music.getTags()){
-                if(tag.getName().length()>5)continue;
-                DBManager.increaseTagCount(tag.getName(),1);
+            for(com.brotherjing.facialexpdemo.bean.douban.Tag t:music.getTags()){
+                if(t.getName().length()>5)continue;
+                DBManager.increaseTagCount(t.getName(),1);
             }
     }
 }

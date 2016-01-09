@@ -25,11 +25,11 @@ public class App extends Application {
     }
 
     private void fillDB(){
-        DBManager.addTag("OST");
-        DBManager.addTag("民谣");
-        DBManager.addTag("日本");
-        DBManager.addTag("治愈");
-        DBManager.addTag("动漫");
-        DBManager.addTag("轻音乐");
+        DBManager.addTag("OST",2);
+        DBManager.addTag("民谣",2);
+        DBManager.addTag("日本",2);
+        DBManager.addTag("治愈",2);
+        DBManager.addTag("动漫",2);
+        DBManager.addTag("轻音乐",2);
     }
 }

@@ -12,4 +12,5 @@ public class GlobalEnv {
     public static HashMap<String,Integer> tagTotal = new HashMap<>();
 
     public static Music currentMusic = null;
+    public static String currentTag = null;
 }
